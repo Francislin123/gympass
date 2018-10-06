@@ -1,0 +1,44 @@
+buildscript {
+	ext {
+		springBootVersion = '2.0.5.RELEASE'
+	}
+	repositories {
+		mavenCentral()
+	}
+	dependencies {
+		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+	}
+}
+
+plugins {
+    id 'java'
+    id 'application'
+    id 'io.franzbecker.gradle-lombok' version '1.11'
+    id 'org.springframework.boot' version '2.0.5.RELEASE'
+}
+
+ext {
+    springFoxVersion = '2.7.0'
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.gympass'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+	mavenCentral()
+}
+
+
+dependencies {
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile "io.springfox:springfox-swagger2:${springFoxVersion}"
+    compile "io.springfox:springfox-swagger-ui:${springFoxVersion}"
+	testImplementation('org.springframework.boot:spring-boot-starter-test')
+    testCompile "org.mockito:mockito-core:1.+"
+}
