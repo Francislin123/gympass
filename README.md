@@ -34,7 +34,7 @@ Hora    Piloto  Nº Volta    Tempo Volta Velocidade média da volta
 23:53:39.660    011 – S.VETTEL    2    1:37.864    28,435
 23:54:57.757    011 – S.VETTEL    3    1:18.097    35,633
 
-# Technologies
+Technologies
 
   - Java 8
   - Gradle 4.0.1
