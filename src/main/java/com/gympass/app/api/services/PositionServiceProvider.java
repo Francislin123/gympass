@@ -9,6 +9,7 @@ import com.gympass.app.api.models.dtos.LapRecordDTO;
 import com.gympass.app.api.models.dtos.PositionDTO;
 import com.gympass.app.api.models.dtos.RaceDTO;
 import com.gympass.app.api.utils.DurationUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,7 @@ import java.util.stream.Collectors;
 /**
  * Created by Francislin Dos Reis on 06/10/18.
  */
+@Slf4j
 @Service
 public class PositionServiceProvider implements IPositionService {
 
@@ -38,16 +40,21 @@ public class PositionServiceProvider implements IPositionService {
     private ILapRecordService lapRecordService;
 
     public List<PositionDTO> getPositions(List<LapRecord> lapRecords){
-
+        log.info("Method getPositions invoked");
         Set<String> driversIds = lapRecordService.getDriversIds(lapRecords);
         List<RaceDTO> raceDTOFromEachDriver = new ArrayList<>();
         List<PositionDTO> result = new ArrayList<>();
         int position = 1;
 
         for (String driverId : driversIds) {
+
+            // Metodo que pegar as voltas do motorista
             List<LapRecord> lapsFromDriver = lapRecordService.getLapsFromDriver(lapRecords, driverId);
+
+            // Obter a última volta do driver
             LapRecord lastLapFromDriver = lapRecordService.getLastLapFromDriver(lapRecords, driverId);
 
+            // Duração total da corrida
             Duration totalDuration = DurationUtils.getTotalDurationFrom(lapsFromDriver);
             LapRecord bestLapFromDriver = lapRecordService.getBestLapFrom(lapsFromDriver);
             LapRecordDTO bestLapFromDriverDTO = lapRecordToLapRecordDTOConverter.convert(bestLapFromDriver);

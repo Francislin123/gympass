@@ -4,6 +4,7 @@ import com.gympass.app.api.core.service.ILapRecordConverter;
 import com.gympass.app.api.models.Driver;
 import com.gympass.app.api.models.LapRecord;
 import com.gympass.app.api.utils.DurationUtils;
+import lombok.extern.slf4j.Slf4j;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -14,12 +15,14 @@ import java.util.List;
 /**
  * Created by Francislin Dos Reis on 06/10/18.
  */
+@Slf4j
 public class StringToLapRecordConverter implements ILapRecordConverter {
 
     private static final int LAP_HOUR_POSITION = 0;
     private static final int DRIVER_POSITION = 1;
     private static final int LAP_NUMBER_POSITION = 2;
     private static final int LAP_TIME_POSITION = 3;
+    // POSIÇÃO DE VELOCIDADE MÉDIA
     private static final int AVERAGE_LAP_SPEED_POSITION = 4;
 
     private static final String SPLIT_CHAR = "    ";
@@ -27,7 +30,9 @@ public class StringToLapRecordConverter implements ILapRecordConverter {
     private static final String COMMA = ",";
 
     public LapRecord convert(String fileLine) {
+        log.info("Method getFromFile invoked");
         if (!fileLine.isEmpty()) {
+
             List<String> data = Arrays.asList(fileLine.split(SPLIT_CHAR));
             StringToDriverConverter driverConverter = new StringToDriverConverter();
 

@@ -1,6 +1,7 @@
 package com.gympass.app.api.utils;
 
 import com.gympass.app.api.models.LapRecord;
+import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
 import java.util.Arrays;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * Created by Francislin Dos Reis on 06/10/18.
  */
+@Slf4j
 public class DurationUtils {
 
     private static final Integer HOURS_IN_MILLISECONDS = 3600000;
@@ -21,7 +23,7 @@ public class DurationUtils {
     private static final Integer ZERO_HOUR_DURATION = 3;
 
     public static Duration getDurationFrom(String value){
-
+        log.info("Method getDurationFrom invoked");
         String formatedValue = value.replace(DOT, COLON);
         List<String> splittedValues = Arrays.asList(formatedValue.split(COLON));
         int hours = 0;
@@ -46,6 +48,7 @@ public class DurationUtils {
     }
 
     public static String getFormattedStringFrom(Duration duration){
+        log.info("Method getFormattedStringFrom invoked", duration);
         if (duration != null) {
             long durationInMillis = duration.toMillis();
             long millis = durationInMillis % 1000;
@@ -60,6 +63,7 @@ public class DurationUtils {
     }
 
     public static Duration getTotalDurationFrom(List<LapRecord> lapRecordsFromDriver){
+        log.info("Method getTotalDurationFrom invoked", lapRecordsFromDriver);
         return lapRecordsFromDriver
                 .stream()
                 .map(lapRecord -> lapRecord.getLapDuration())
@@ -68,6 +72,7 @@ public class DurationUtils {
     }
 
     public static Duration getDelayBetween(LapRecord first, LapRecord second){
+        log.info("Method getDelayBetween invoked", first, second);
         if (first.getLapNumber().equals(second.getLapNumber())) {
             return second.getLapDuration().minus(first.getLapDuration());
         } else{

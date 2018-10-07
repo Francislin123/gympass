@@ -1,4 +1,4 @@
-package com.gympass.app.api.config;
+package com.gympass.app.api;
 
 import com.gympass.app.api.converters.LapRecordToLapRecordDTOConverter;
 import com.gympass.app.api.converters.RaceDTOToPositionDTOConverter;
