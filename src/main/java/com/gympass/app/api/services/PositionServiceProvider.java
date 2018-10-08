@@ -39,7 +39,7 @@ public class PositionServiceProvider implements IPositionService {
     @Autowired
     private ILapRecordService lapRecordService;
 
-    public List<PositionDTO> getPositions(List<LapRecord> lapRecords){
+    public List<PositionDTO> getPositions(List<LapRecord> lapRecords) {
         log.info("Method getPositions invoked");
         Set<String> driversIds = lapRecordService.getDriversIds(lapRecords);
         List<RaceDTO> raceDTOFromEachDriver = new ArrayList<>();
@@ -61,11 +61,11 @@ public class PositionServiceProvider implements IPositionService {
             BigDecimal averageSpeedFromDriver = lapRecordService.getTotalAverageSpeedFrom(lapsFromDriver);
 
             RaceDTO raceDTO = new RaceDTO.Builder()
-                                                .withLapRecord(lastLapFromDriver)
-                                                .withTotalDuration(totalDuration)
-                                                .withBestLap(bestLapFromDriverDTO)
-                                                .withTotalAverageSpeed(averageSpeedFromDriver)
-                                                .build();
+                    .withLapRecord(lastLapFromDriver)
+                    .withTotalDuration(totalDuration)
+                    .withBestLap(bestLapFromDriverDTO)
+                    .withTotalAverageSpeed(averageSpeedFromDriver)
+                    .build();
 
             raceDTOFromEachDriver.add(raceDTO);
         }
@@ -73,7 +73,7 @@ public class PositionServiceProvider implements IPositionService {
         Comparator<RaceDTO> totalDurationComparator = Comparator.comparing(RaceDTO::getTotalDuration);
         List<RaceDTO> sortedRaceDTO = raceDTOFromEachDriver.stream().sorted(totalDurationComparator).collect(Collectors.toList());
 
-        for(RaceDTO raceDTO : sortedRaceDTO) {
+        for (RaceDTO raceDTO : sortedRaceDTO) {
             Duration delayBetweenDrivers = DurationUtils.getDelayBetween(sortedRaceDTO.get(FIRST_PLACE).getLapRecord(), raceDTO.getLapRecord());
             raceDTO.setDelayAfterWinner(delayBetweenDrivers);
             result.add(raceDTOToPositionDTOConverter.convert(position, raceDTO));

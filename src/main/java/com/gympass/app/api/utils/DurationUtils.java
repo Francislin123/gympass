@@ -22,22 +22,22 @@ public class DurationUtils {
 
     private static final Integer ZERO_HOUR_DURATION = 3;
 
-    public static Duration getDurationFrom(String value){
+    public static Duration getDurationFrom(String value) {
         log.info("Method getDurationFrom invoked");
         String formatedValue = value.replace(DOT, COLON);
         List<String> splittedValues = Arrays.asList(formatedValue.split(COLON));
-        int hours = 0;
-        int minutes = 0;
-        int seconds = 0;
-        int milliseconds = 0;
+        int hours;
+        int minutes;
+        int seconds;
+        int milliseconds;
 
-        if (splittedValues.size() == ZERO_HOUR_DURATION){
+        if (splittedValues.size() == ZERO_HOUR_DURATION) {
             minutes = Integer.valueOf(splittedValues.get(0));
             seconds = Integer.valueOf(splittedValues.get(1));
             milliseconds = Integer.valueOf(splittedValues.get(2));
 
-            return Duration.ofMillis(( MINUTES_IN_MILLISECONDS * minutes) + (SECONDS_IN_MILLISECONDS * seconds) + milliseconds);
-        } else{
+            return Duration.ofMillis((MINUTES_IN_MILLISECONDS * minutes) + (SECONDS_IN_MILLISECONDS * seconds) + milliseconds);
+        } else {
             hours = Integer.valueOf(splittedValues.get(0));
             minutes = Integer.valueOf(splittedValues.get(1));
             seconds = Integer.valueOf(splittedValues.get(2));
@@ -47,7 +47,7 @@ public class DurationUtils {
         }
     }
 
-    public static String getFormattedStringFrom(Duration duration){
+    public static String getFormattedStringFrom(Duration duration) {
         log.info("Method getFormattedStringFrom invoked", duration);
         if (duration != null) {
             long durationInMillis = duration.toMillis();
@@ -62,7 +62,7 @@ public class DurationUtils {
         return null;
     }
 
-    public static Duration getTotalDurationFrom(List<LapRecord> lapRecordsFromDriver){
+    public static Duration getTotalDurationFrom(List<LapRecord> lapRecordsFromDriver) {
         log.info("Method getTotalDurationFrom invoked", lapRecordsFromDriver);
         return lapRecordsFromDriver
                 .stream()
@@ -71,11 +71,11 @@ public class DurationUtils {
                 .get();
     }
 
-    public static Duration getDelayBetween(LapRecord first, LapRecord second){
+    public static Duration getDelayBetween(LapRecord first, LapRecord second) {
         log.info("Method getDelayBetween invoked", first, second);
         if (first.getLapNumber().equals(second.getLapNumber())) {
             return second.getLapDuration().minus(first.getLapDuration());
-        } else{
+        } else {
             //Didn't finish the race
             return first.getLapDuration().plus(second.getLapDuration().minus(first.getLapDuration()));
         }

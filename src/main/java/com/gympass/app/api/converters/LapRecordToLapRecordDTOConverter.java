@@ -20,13 +20,13 @@ public class LapRecordToLapRecordDTOConverter implements ILapRecordDTOConverter 
         String averageLapSpeed = String.valueOf(lapRecord.getAverageLapSpeed());
 
         return new LapRecordDTO.Builder()
-                                .withHour(hour)
-                                .withDriverId(driverId)
-                                .withDriverName(driverName)
-                                .withLapNumber(lapNumber)
-                                .withlapDuration(lapDuration)
-                                .withAverageLapSpeed(averageLapSpeed)
-                                .build();
+                .withHour(hour)
+                .withDriverId(driverId)
+                .withDriverName(driverName)
+                .withLapNumber(lapNumber)
+                .withlapDuration(lapDuration)
+                .withAverageLapSpeed(averageLapSpeed)
+                .build();
 
     }
 }

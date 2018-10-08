@@ -70,7 +70,7 @@ public class PositionDTO {
             return this;
         }
 
-        public PositionDTO build(){
+        public PositionDTO build() {
             return new PositionDTO(this);
         }
     }

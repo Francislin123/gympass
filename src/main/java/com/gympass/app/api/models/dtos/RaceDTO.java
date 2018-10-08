@@ -18,7 +18,7 @@ public class RaceDTO {
     private BigDecimal totalAverageSpeed;
     private Duration delayAfterWinner;
 
-    public RaceDTO(Builder builder){
+    public RaceDTO(Builder builder) {
         this.lapRecord = builder.lapRecord;
         this.totalDuration = builder.totalDuration;
         this.bestLap = builder.bestLap;
@@ -26,19 +26,19 @@ public class RaceDTO {
         this.delayAfterWinner = builder.delayAfterWinner;
     }
 
-    public static class Builder{
+    public static class Builder {
         private LapRecord lapRecord;
         private Duration totalDuration;
         private LapRecordDTO bestLap;
         private BigDecimal totalAverageSpeed;
         private Duration delayAfterWinner;
 
-        public Builder withLapRecord (LapRecord lapRecord){
+        public Builder withLapRecord(LapRecord lapRecord) {
             this.lapRecord = lapRecord;
             return this;
         }
 
-        public Builder withTotalDuration(Duration totalDuration){
+        public Builder withTotalDuration(Duration totalDuration) {
             this.totalDuration = totalDuration;
             return this;
         }
@@ -48,17 +48,17 @@ public class RaceDTO {
             return this;
         }
 
-        public Builder withTotalAverageSpeed(BigDecimal totalAverageSpeed){
+        public Builder withTotalAverageSpeed(BigDecimal totalAverageSpeed) {
             this.totalAverageSpeed = totalAverageSpeed;
             return this;
         }
 
-        public Builder withDelayAfterWinner(Duration delayAfterWinner){
+        public Builder withDelayAfterWinner(Duration delayAfterWinner) {
             this.delayAfterWinner = delayAfterWinner;
             return this;
         }
 
-        public RaceDTO build(){
+        public RaceDTO build() {
             return new RaceDTO(this);
         }
     }

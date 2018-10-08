@@ -26,7 +26,7 @@ public class FileServiceProvider implements IFileService {
     private ILapRecordConverter converter;
 
     // Pegar as informaçoes do arquivo
-    public List<LapRecord> getFromFile(MultipartFile file){
+    public List<LapRecord> getFromFile(MultipartFile file) {
         log.info("Method getFromFile invoked");
         List<String> fileLines = logReader.readFile(file);
 

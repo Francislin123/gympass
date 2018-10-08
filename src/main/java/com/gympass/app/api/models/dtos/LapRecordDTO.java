@@ -15,7 +15,7 @@ public class LapRecordDTO {
     private String lapDuration;
     private String averageLapSpeed;
 
-    private LapRecordDTO(Builder builder){
+    private LapRecordDTO(Builder builder) {
 
         this.hour = builder.hour;
         this.driverId = builder.driverId;
@@ -25,7 +25,7 @@ public class LapRecordDTO {
         this.averageLapSpeed = builder.averageLapSpeed;
     }
 
-    public static class Builder{
+    public static class Builder {
 
         private String hour;
         private String driverId;
@@ -34,9 +34,10 @@ public class LapRecordDTO {
         private String lapDuration;
         private String averageLapSpeed;
 
-        public Builder(){}
+        public Builder() {
+        }
 
-        public Builder withHour(String hour){
+        public Builder withHour(String hour) {
             this.hour = hour;
             return this;
         }
@@ -51,22 +52,22 @@ public class LapRecordDTO {
             return this;
         }
 
-        public Builder withLapNumber(String lapNumber){
+        public Builder withLapNumber(String lapNumber) {
             this.lapNumber = lapNumber;
             return this;
         }
 
-        public Builder withlapDuration(String lapDuration){
+        public Builder withlapDuration(String lapDuration) {
             this.lapDuration = lapDuration;
             return this;
         }
 
-        public Builder withAverageLapSpeed(String averageLapSpeed){
+        public Builder withAverageLapSpeed(String averageLapSpeed) {
             this.averageLapSpeed = averageLapSpeed;
             return this;
         }
 
-        public LapRecordDTO build(){
+        public LapRecordDTO build() {
             return new LapRecordDTO(this);
         }
     }

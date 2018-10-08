@@ -32,8 +32,8 @@ public class AppController {
             @ApiResponse(code = 200, message = "Successfully imported text file", response = ResponseEntity.class)})
     @CrossOrigin
     @ResponseBody
-    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = {"multipart/form-data", MediaType.APPLICATION_JSON_VALUE })
-    public ResponseEntity <ResultDTO> handleFileUpload(@RequestParam("file") MultipartFile file){
+    @RequestMapping(value = "/", method = RequestMethod.POST, consumes = {"multipart/form-data", MediaType.APPLICATION_JSON_VALUE})
+    public ResponseEntity<ResultDTO> handleFileUpload(@RequestParam("file") MultipartFile file) {
         return ResponseEntity.ok(resultService.getResult(fileService.getFromFile(file)));
     }
 }

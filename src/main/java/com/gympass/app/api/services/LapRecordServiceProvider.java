@@ -19,7 +19,8 @@ import java.util.stream.Collectors;
 @Service
 public class LapRecordServiceProvider implements ILapRecordService {
 
-    public List<LapRecord> getLapsFromDriver(List<LapRecord> lapRecords, String driverId){
+    // Obter voltas do motorista
+    public List<LapRecord> getLapsFromDriver(List<LapRecord> lapRecords, String driverId) {
         log.info("Method getLapsFromDriver invoked");
         return lapRecords.stream().filter(lap -> lap.getDriver().getId().equals(driverId)).collect(Collectors.toList());
     }
@@ -31,7 +32,7 @@ public class LapRecordServiceProvider implements ILapRecordService {
     }
 
     // Obter a última volta do motorista
-    public LapRecord getLastLapFromDriver(List<LapRecord> lapRecords, String driverId){
+    public LapRecord getLastLapFromDriver(List<LapRecord> lapRecords, String driverId) {
         log.info("Method getLastLapFromDriver invoked");
         Comparator<LapRecord> lapNumberComparator = Comparator.comparing(LapRecord::getLapNumber);
         List<LapRecord> lapsFromDriver = getLapsFromDriver(lapRecords, driverId);
@@ -40,7 +41,7 @@ public class LapRecordServiceProvider implements ILapRecordService {
     }
 
     // Obter velocidade média total das voltas
-    public BigDecimal getTotalAverageSpeedFrom(List<LapRecord> lapRecordsFromDriver){
+    public BigDecimal getTotalAverageSpeedFrom(List<LapRecord> lapRecordsFromDriver) {
         log.info("Method getTotalAverageSpeedFrom invoked");
         BigDecimal sum = lapRecordsFromDriver
                 .stream()
@@ -52,7 +53,7 @@ public class LapRecordServiceProvider implements ILapRecordService {
     }
 
     // Obter melhor volta do motorista
-    public LapRecord getBestLapFrom(List<LapRecord> lapRecordsFromDriver){
+    public LapRecord getBestLapFrom(List<LapRecord> lapRecordsFromDriver) {
         log.info("Method getBestLapFrom invoked");
         Comparator<LapRecord> durationComparator = Comparator.comparing(LapRecord::getLapDuration);
         return lapRecordsFromDriver.stream().min(durationComparator).get();

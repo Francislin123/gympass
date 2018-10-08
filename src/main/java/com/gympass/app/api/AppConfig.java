@@ -20,22 +20,22 @@ public class AppConfig {
     }
 
     @Bean
-    public StringToDriverConverter driverConverter(){
+    public StringToDriverConverter driverConverter() {
         return new StringToDriverConverter();
     }
 
     @Bean
-    public StringToLapRecordConverter stringToLapRecordConverter(){
+    public StringToLapRecordConverter stringToLapRecordConverter() {
         return new StringToLapRecordConverter();
     }
 
     @Bean
-    public LapRecordToLapRecordDTOConverter lapRecordToLapRecordDTOConverter (){
+    public LapRecordToLapRecordDTOConverter lapRecordToLapRecordDTOConverter() {
         return new LapRecordToLapRecordDTOConverter();
     }
 
     @Bean
-    public RaceDTOToPositionDTOConverter raceDTOToPositionDTOConverter(){
+    public RaceDTOToPositionDTOConverter raceDTOToPositionDTOConverter() {
         return new RaceDTOToPositionDTOConverter();
     }
 }

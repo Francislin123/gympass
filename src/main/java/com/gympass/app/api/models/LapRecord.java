@@ -18,7 +18,7 @@ public class LapRecord {
     private Duration lapDuration;
     private BigDecimal averageLapSpeed;
 
-    private LapRecord(Builder builder){
+    private LapRecord(Builder builder) {
         this.hour = builder.hour;
         this.driver = builder.driver;
         this.lapNumber = builder.lapNumber;
@@ -26,7 +26,7 @@ public class LapRecord {
         this.averageLapSpeed = builder.averageLapSpeed;
     }
 
-    public static class Builder{
+    public static class Builder {
 
         private LocalTime hour;
         private Driver driver;
@@ -34,34 +34,35 @@ public class LapRecord {
         private Duration lapDuration;
         private BigDecimal averageLapSpeed;
 
-        public Builder(){}
+        public Builder() {
+        }
 
-        public Builder withHour(LocalTime hour){
+        public Builder withHour(LocalTime hour) {
             this.hour = hour;
             return this;
         }
 
-        public Builder withDriver(Driver driver){
+        public Builder withDriver(Driver driver) {
             this.driver = driver;
             return this;
         }
 
-        public Builder withLapNumber(Integer lapNumber){
+        public Builder withLapNumber(Integer lapNumber) {
             this.lapNumber = lapNumber;
             return this;
         }
 
-        public Builder withLapDuration(Duration lapDuration){
+        public Builder withLapDuration(Duration lapDuration) {
             this.lapDuration = lapDuration;
             return this;
         }
 
-        public Builder withAverageLapSpeed(BigDecimal averageLapSpeed){
+        public Builder withAverageLapSpeed(BigDecimal averageLapSpeed) {
             this.averageLapSpeed = averageLapSpeed;
             return this;
         }
 
-        public LapRecord build(){
+        public LapRecord build() {
             return new LapRecord(this);
         }
     }
