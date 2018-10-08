@@ -55,4 +55,5 @@ $ cd gympass/
 $ ./gradlew bootRun
 ```
 # Documentation of the api
-http://localhost:8080/swagger-ui.html
+swagger http://localhost:8080/swagger-ui.html
+javaDoc gympass/index.html
